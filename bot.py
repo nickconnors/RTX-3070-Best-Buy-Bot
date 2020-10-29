@@ -5,7 +5,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 import info
 
+# make sure this path is correct
 PATH = "C:\Program Files (x86)\ChromeDriver\chromedriver.exe"
+
 driver = webdriver.Chrome(PATH)
 
 RTX3070LINK1 = "https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum-and-black/6429442.p?skuId=6429442"
@@ -45,12 +47,12 @@ while not isComplete:
         emailField = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "fld-e"))
         )
-        emailField.send_keys(Info.email)
+        emailField.send_keys(info.email)
 
         pwField = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "fld-p1"))
         )
-        pwField.send_keys(Info.password)
+        pwField.send_keys(info.password)
 
         # click sign in button
         signInBtn = WebDriverWait(driver, 10).until(
@@ -63,8 +65,8 @@ while not isComplete:
         cvvField = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "credit-card-cvv"))
         )
-
-        cvvField.send_keys(Info.cvv)
+        cvvField.send_keys(info.cvv)
+        print("Attempting to place order")
 
         # place order
         placeOrderBtn = WebDriverWait(driver, 10).until(
@@ -74,11 +76,12 @@ while not isComplete:
 
         isComplete = True
     except:
+        # make sure this link is the same as the link passed to driver.get() before looping
         driver.get(RTX3070LINK1)
         print("Error - restarting bot")
         continue
 
-print("Successfully purchased")
+print("Order successfully placed")
 
 
 
