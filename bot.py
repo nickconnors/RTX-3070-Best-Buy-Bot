@@ -41,7 +41,7 @@ while not isComplete:
         driver.get("https://www.bestbuy.com/cart")
 
         checkoutBtn = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div[2]/div[1]/div/div/span/div/div[2]/div[1]/section[2]/div/div/div[3]/div/div[1]/button"))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".checkout-buttons__checkout>button"))
         )
         checkoutBtn.click()
         print("Successfully added to cart - beginning check out")
@@ -59,7 +59,7 @@ while not isComplete:
 
         # click sign in button
         signInBtn = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/section/main/div[1]/div/div/div/div/form/div[3]/button"))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".cia-form__controls__submit"))
         )
         signInBtn.click()
         print("Signing in")
