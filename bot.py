@@ -6,9 +6,12 @@ from selenium.webdriver.support import expected_conditions as EC
 import info
 
 # make sure this path is correct
-PATH = "C:\Program Files (x86)\ChromeDriver\chromedriver.exe"
+PATH = r"C:\Program Files (x86)\ChromeDriver\chromedriver.exe"
 
-driver = webdriver.Chrome(PATH)
+options = webdriver.ChromeOptions()
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
+
+driver = webdriver.Chrome(options=options, executable_path=PATH)
 
 RTX3070LINK1 = "https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum-and-black/6429442.p?skuId=6429442"
 RTX3070LINK2 = "https://www.bestbuy.com/site/gigabyte-geforce-rtx-3070-8g-gddr6-pci-express-4-0-graphics-card-black/6437912.p?skuId=6437912"
@@ -38,7 +41,7 @@ while not isComplete:
         driver.get("https://www.bestbuy.com/cart")
 
         checkoutBtn = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div[2]/div[1]/div/div/span/div/div[2]/div[1]/section[2]/div/div/div[3]/div/div[1]/button"))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".checkout-buttons__checkout>button"))
         )
         checkoutBtn.click()
         print("Successfully added to cart - beginning check out")
@@ -56,7 +59,7 @@ while not isComplete:
 
         # click sign in button
         signInBtn = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/section/main/div[1]/div/div/div/div/form/div[3]/button"))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".cia-form__controls__submit"))
         )
         signInBtn.click()
         print("Signing in")
