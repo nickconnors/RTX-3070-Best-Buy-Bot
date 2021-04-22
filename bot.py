@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import info
 
 # make sure this path is correct
-PATH = "C:\Program Files (x86)\ChromeDriver\chromedriver.exe"
+PATH = r"C:\Program Files (x86)\ChromeDriver\chromedriver.exe"
 
 driver = webdriver.Chrome(PATH)
 
