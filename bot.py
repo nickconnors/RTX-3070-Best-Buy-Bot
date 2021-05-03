@@ -1,13 +1,18 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-import info
+from playsound import playsound
 
-# make sure this path is correct
-PATH = "F:\Program Files\Chormedriver\chromedriver.exe"
-driver = webdriver.Chrome(PATH)
+import os
+
+scriptdir = os.path.dirname(os.path.realpath(__file__))
+PATH = scriptdir+"\chromedriver.exe"
+options = Options()
+#options.add_argument("user-data-dir="+scriptdir+"\profile")
+driver = webdriver.Chrome(PATH,options=options)
 
 RTX3070LINK1 = "https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum-and-black/6429442.p?skuId=6429442"
 driver.get(RTX3070LINK1)
@@ -31,5 +36,7 @@ while not isComplete:
     # add to cart
     atcBtn.click()
 
-    print("Now you are in queue. The chekout is up to you :)")
+    print("Now you are in queue. The checkout is up to you :)")
+    playsound(scriptdir+"\woohoo.wav")
+	
     isComplete = True

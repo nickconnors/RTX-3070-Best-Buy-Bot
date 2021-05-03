@@ -11,10 +11,11 @@
 ## Dependencies
 - Selenium
 	- `pip install selenium`
+- PlaySound
+	- `pip install playsound`	
 - [Google Chrome](https://www.google.com/chrome/)
 - [ChromeDriver](https://chromedriver.chromium.org/downloads)
-	- Extract the compressed chromedriver executable to a driectory of your choice (be sure to update the path in bot.py accordingly)
-		- For the Windows machine I developed this on, I chose `C:\Program Files (x86)\ChromeDriver\chromedriver.exe`
+	- Extract the compressed chromedriver executable to script directory
 
 ## Running the Bot
 1. Make sure you have [Python 3.9](https://www.python.org/downloads/release/python-390/)
